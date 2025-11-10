@@ -2,497 +2,1147 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nova Company - Tráfego Pago + Secretária de IA para Clínicas</title>
 
   <!-- Fontes Google -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
   <style>
-    :root{
-      --color-white:#FFFFFF;
-      --color-primary:#0a7fdb;
-      --color-primary-dark:#0057a8;
-      --color-text-gray:#4B5563;
-      --color-text-dark:#111827;
-      --color-light:#F3F4F6;
-      --color-card-border:#E5E7EB;
+    :root {
+      --color-white: #ffffff;
+      --color-primary: #0a7fdb;
+      --color-primary-dark: #075fa6;
+      --color-bg-soft: #f3f7fd;
+      --color-text-main: #0f172a;
+      --color-text-muted: #6b7280;
+      --color-card-border: #e5e7eb;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-strong: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --radius-card: 18px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-
-    html{scroll-behavior:smooth;}
-
-    body{
-      font-family:'Inter',sans-serif;
-      color:var(--color-text-dark);
-      line-height:1.6;
-      background:var(--color-white);
-      overflow-x:hidden;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-    .text-center{text-align:center}
-    .mt-12{margin-top:3rem}
-    .mb-12{margin-bottom:3rem}
+    html {
+      scroll-behavior: smooth;
+    }
 
-    h1,h2,h3{color:var(--color-text-dark);font-weight:700}
-    h1{font-size:clamp(2.4rem,5vw,3.4rem);line-height:1.1}
-    h2{font-size:clamp(2rem,4vw,2.5rem);line-height:1.2;margin-bottom:1rem}
-    h3{font-size:1.3rem;line-height:1.3;margin-bottom:.75rem}
-    p{color:var(--color-text-gray);font-size:1.05rem;max-width:720px;margin-left:auto;margin-right:auto}
-    p.subtitle{margin-bottom:3rem}
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--color-text-main);
+      line-height: 1.6;
+      background: var(--color-white);
+      overflow-x: hidden;
+    }
 
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:.9rem 1.8rem;border-radius:9999px;font-weight:600;font-size:1rem;
-      text-decoration:none;transition:all .25s ease;border:none;cursor:pointer;
-      box-shadow:0 4px 14px rgba(15,118,180,.18);
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .btn-primary{
-      background-image:linear-gradient(90deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);
-      color:#fff;
+
+    .text-center {
+      text-align: center;
     }
-    .btn-primary:hover{box-shadow:0 6px 20px rgba(15,118,180,.32);transform:translateY(-2px)}
-    .btn-secondary{
-      background:#fff;color:var(--color-primary);border:1px solid #BFDBFE;
-      box-shadow:0 2px 6px rgba(15,23,42,.06)
+
+    h1,
+    h2,
+    h3 {
+      color: var(--color-text-main);
+      font-weight: 700;
     }
-    .btn-secondary:hover{box-shadow:0 4px 12px rgba(15,23,42,.10);transform:translateY(-2px);border-color:#60A5FA}
+
+    h1 {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+    }
+
+    p.subtitle {
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.9rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #0a7fdb, #0b5fb1);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-strong);
+      filter: brightness(1.05);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-1px);
+    }
 
     /* =================== HEADER / NAVBAR =================== */
-    header{
-      position:fixed;top:0;left:0;width:100%;
-      background-color:rgba(255,255,255,.92);
-      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(15,23,42,.06);
-      z-index:1000;padding:.85rem 0;transition:box-shadow .25s ease, transform .25s ease;
-    }
-    header.is-scrolled{box-shadow:0 10px 28px rgba(15,23,42,.10)}
-    header nav{display:flex;justify-content:space-between;align-items:center;padding:0 20px}
 
-    .logo-container{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111827;font-size:1.25rem;font-weight:800;flex-shrink:0}
-    .logo-container img{height:28px;width:auto;display:block}
-
-    .nav-links{display:flex;align-items:center;gap:24px}
-    .nav-links a{
-      position:relative;text-decoration:none;color:var(--color-text-gray);
-      font-weight:600;font-size:.95rem;padding:8px 2px;transition:color .2s
-    }
-    .nav-links a:not(.btn-nav)::after{
-      content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
-      background:var(--color-primary);transform:scaleX(0);transform-origin:left;transition:transform .2s
-    }
-    .nav-links a:hover{color:#111827}
-    .nav-links a:hover:not(.btn-nav)::after{transform:scaleX(1)}
-    .nav-links a.is-active{color:#111827}
-    .nav-links a.is-active:not(.btn-nav)::after{transform:scaleX(1)}
-
-    .btn-nav{
-      padding:.6rem 1.2rem;border-radius:9999px;font-size:.9rem;font-weight:700;
-      background-image:linear-gradient(90deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);
-      color:#fff;
-      box-shadow:0 8px 20px rgba(10,127,219,.32);
-      white-space:nowrap;
-      transition:transform .2s, filter .2s, box-shadow .2s;
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+      z-index: 1000;
+      transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
     }
 
-    /* força o texto branco no CTA (desktop + mobile) */
-    .nav-links a.btn-nav{
-      color:#fff !important;
-      text-shadow:0 1px 0 rgba(0,0,0,.25);
+    header.is-scrolled {
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      border-color: transparent;
     }
-    .nav-links a.btn-nav::after{display:none !important;}
 
-    .btn-nav:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 12px 28px rgba(10,127,219,.40)}
-    .btn-nav:active{transform:translateY(0)}
+    header nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 20px;
+    }
 
-    .hamburger-menu{display:none;cursor:pointer;margin-left:8px}
-    .hamburger-menu svg{width:30px;height:30px;stroke:#111827}
-    .close-menu{display:none;position:absolute;top:1.25rem;right:1.25rem;cursor:pointer;z-index:1002}
-    .close-menu svg{width:30px;height:30px;stroke:#111827}
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--color-text-main);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+    }
 
-    @media (max-width:992px){
-      .nav-links{
-        position:fixed;top:0;right:-100%;width:min(86vw,360px);height:100dvh;background:#F3F4F6;
-        box-shadow:-24px 0 40px rgba(15,23,42,.24);flex-direction:column;align-items:flex-start;
-        padding:5.5rem 1.5rem 1.5rem;gap:26px;transition:right .25s ease;z-index:1001
+    .logo-container img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      font-size: 0.96rem;
+      padding: 6px 2px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:not(.btn-nav)::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-text-main);
+    }
+
+    .nav-links a:hover:not(.btn-nav)::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.is-active {
+      color: var(--color-text-main);
+      font-weight: 600;
+    }
+
+    .nav-links a.is-active:not(.btn-nav)::after {
+      transform: scaleX(1);
+    }
+
+    .btn-nav {
+      padding: 0.7rem 1.4rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #0a7fdb, #0b5fb1);
+      color: #ffffff !important; /* garante branco */
+      box-shadow: 0 14px 32px rgba(10, 127, 219, 0.45);
+      white-space: nowrap;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 40px rgba(10, 127, 219, 0.65);
+    }
+
+    .btn-nav:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 24px rgba(10, 127, 219, 0.55);
+    }
+
+    /* remove underline animado do CTA */
+    .nav-links a.btn-nav::after {
+      display: none !important;
+    }
+
+    /* força branco mesmo em herança no menu mobile */
+    .nav-links a.btn-nav,
+    .nav-links .btn-nav span {
+      color: #ffffff !important;
+    }
+
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+
+    .hamburger-menu svg {
+      width: 30px;
+      height: 30px;
+      stroke: #111827;
+    }
+
+    .close-menu {
+      display: none;
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    .close-menu svg {
+      width: 30px;
+      height: 30px;
+      stroke: #111827;
+    }
+
+    /* Overlay para o menu mobile */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 998;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 992px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(86vw, 360px);
+        height: 100dvh;
+        background: #ffffff;
+        box-shadow: -24px 0 40px rgba(15, 23, 42, 0.22);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5.5rem 1.7rem 1.7rem;
+        gap: 20px;
+        transition: right 0.25s ease;
+        z-index: 999;
       }
-      .nav-links.active{right:0}
-      .nav-links a{font-size:1.1rem;width:100%}
-      .nav-links .btn-nav{
-        width:100%;text-align:center;padding:.95rem 1rem;
-        justify-content:center;
+
+      .nav-links.active {
+        right: 0;
       }
-      .hamburger-menu{display:block}
-      .close-menu{display:block}
-    }
-    /* ================= END HEADER ================= */
 
-    section{padding:80px 0;overflow:hidden}
-    section:nth-of-type(odd){background:var(--color-white)}
-    section:nth-of-type(even){background:#F9FAFB}
+      .nav-links a {
+        font-size: 1.05rem;
+        width: 100%;
+      }
 
-    #hero{padding:140px 0 70px 0;text-align:center}
-    #hero .badge{
-      display:inline-block;background:#E0F2FE;color:var(--color-primary-dark);
-      padding:6px 16px;border-radius:9999px;font-size:.85rem;font-weight:600;margin-bottom:18px;
-      border:1px solid #BAE6FD;
-    }
-    #hero h1{max-width:800px;margin:0 auto 20px}
-    #hero p{max-width:720px;margin:0 auto 32px;font-size:1.08rem}
-    #hero .hero-highlight{color:var(--color-primary-dark)}
+      .nav-links .btn-nav {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.9rem 1.1rem;
+      }
 
-    #hero .hero-buttons{
-      display:flex;justify-content:center;gap:16px;margin-bottom:40px;flex-wrap:wrap
+      .hamburger-menu {
+        display: block;
+      }
+
+      .close-menu {
+        display: block;
+      }
     }
 
-    #hero .metrics{display:flex;justify-content:center;gap:40px;margin-top:40px;flex-wrap:wrap}
-    #hero .metric-item{text-align:center}
-    #hero .metric-item strong{display:block;font-size:1.9rem;font-weight:700;color:var(--color-primary-dark);margin-bottom:4px}
-    #hero .metric-item span{color:var(--color-text-gray);font-size:.95rem}
+    /* ================= SEÇÕES ================= */
 
-    /* Cards genéricos */
-    .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-    .card{
-      background:#fff;padding:26px;border-radius:18px;border:1px solid var(--color-card-border);
-      box-shadow:0 7px 16px rgba(15,23,42,.04);transition:transform .3s, box-shadow .3s;
-      display:flex;flex-direction:column;align-items:flex-start
+    section {
+      padding: 90px 0;
     }
-    .card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(15,23,42,.08)}
-    .card .icon{
-      width:44px;height:44px;background:#EFF6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;
-      margin-bottom:16px;font-size:1.6rem;color:var(--color-primary-dark);border:1px solid #DBEAFE
-    }
-    .card h3{font-size:1.15rem;margin-bottom:8px;color:var(--color-text-dark)}
-    .card p{font-size:.98rem;color:var(--color-text-gray);margin:0}
 
-    /* Como funciona */
-    .steps-list{
-      margin-top:40px;display:grid;grid-template-columns:1fr;gap:22px;max-width:900px;margin-left:auto;margin-right:auto
+    section:nth-of-type(odd) {
+      background: var(--color-white);
     }
-    .step-item{
-      display:flex;align-items:flex-start;gap:18px;background:#F9FAFB;padding:20px;border-radius:14px;
-      box-shadow:0 5px 12px rgba(15,23,42,.03);border:1px solid #E5E7EB
-    }
-    .step-item .step-number{
-      width:32px;height:32px;border-radius:999px;background:#EFF6FF;color:var(--color-primary-dark);
-      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;flex-shrink:0
-    }
-    .step-item h3{margin-bottom:4px;font-size:1.05rem}
-    .step-item p{margin:0;font-size:.95rem}
 
-    /* Resultados */
-    #resultados .kpis{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;margin-top:32px;
+    section:nth-of-type(even) {
+      background: var(--color-bg-soft);
     }
-    #resultados .kpi{
-      background:#fff;border-radius:16px;border:1px solid #E5E7EB;
-      padding:22px;text-align:left;box-shadow:0 8px 18px rgba(15,23,42,.04)
+
+    /* HERO */
+
+    #hero {
+      padding: 140px 0 80px 0;
     }
-    #resultados .kpi strong{
-      display:block;font-size:1.8rem;color:var(--color-primary-dark);margin-bottom:6px
+
+    #hero .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 50px;
+      align-items: center;
     }
-    #resultados .kpi span{
-      display:block;font-size:.95rem;color:var(--color-text-gray);margin-bottom:8px
+
+    #hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.25rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.02);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-bottom: 16px;
     }
-    #resultados .kpi p{font-size:.95rem;margin:0}
+
+    #hero-badge span.tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(10, 127, 219, 0.08);
+      color: #0a7fdb;
+    }
+
+    #hero p.hero-subtitle {
+      margin: 14px 0 22px;
+      max-width: 550px;
+      font-size: 1.03rem;
+    }
+
+    .hero-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 26px;
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      color: #4b5563;
+    }
+
+    .hero-list li span.icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background: rgba(22, 163, 74, 0.12);
+      color: #16a34a;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .hero-credit {
+      margin-top: 18px;
+      font-size: 0.82rem;
+      color: #9ca3af;
+    }
+
+    /* lado direito do hero (card de resultado, sem imagem de logos) */
+
+    .hero-right-card {
+      background: radial-gradient(circle at top left, rgba(10, 127, 219, 0.12), transparent),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent),
+        #0b1220;
+      border-radius: 30px;
+      padding: 30px 26px;
+      color: #e5e7eb;
+      box-shadow: 0 40px 80px rgba(15, 23, 42, 0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-card h3 {
+      color: #f9fafb;
+      margin-bottom: 4px;
+    }
+
+    .hero-right-card p {
+      color: #cbd5f5;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      font-size: 0.75rem;
+      margin-bottom: 12px;
+    }
+
+    .metric-pill strong {
+      color: #22c55e;
+    }
+
+    .hero-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .metric-box {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 18px;
+      padding: 14px 14px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .metric-box span.label {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .metric-box span.value {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #e5e7eb;
+    }
+
+    .hero-right-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #a5b4fc;
+    }
+
+    .hero-right-footer span.badge {
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #e0f2fe;
+    }
+
+    /* COMO FUNCIONA */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 40px;
+    }
+
+    .step-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 18px 18px 18px;
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--shadow-soft);
+      text-align: left;
+    }
+
+    .step-card span.step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 9999px;
+      background: rgba(10, 127, 219, 0.07);
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    /* O QUE ESTÁ INCLUSO */
+
+    .incluso-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .feature-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--shadow-soft);
+      text-align: left;
+    }
+
+    .feature-card .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      background: rgba(10, 127, 219, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 0.96rem;
+    }
+
+    /* RESULTADOS */
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .result-card {
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--color-card-border);
+      box-shadow: var(--shadow-soft);
+      text-align: left;
+    }
+
+    .result-card span.tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(21, 128, 61, 0.06);
+      color: #15803d;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .result-card strong.value {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 2px;
+      color: var(--color-primary-dark);
+    }
+
+    .result-card small {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
 
     /* FAQ */
-    #faq{background:#fff}
-    .faq-accordion{margin-top:40px;max-width:800px;margin-left:auto;margin-right:auto}
-    .accordion-item{
-      background:#fff;border-radius:15px;margin-bottom:14px;border:1px solid #E5E7EB;
-      box-shadow:0 5px 15px rgba(15,23,42,.04);overflow:hidden;transition:margin-bottom .3s
-    }
-    .accordion-item:hover{box-shadow:0 8px 20px rgba(15,23,42,.06)}
-    .accordion-header{
-      display:flex;justify-content:space-between;align-items:center;padding:18px 22px;cursor:pointer;font-weight:600;font-size:1.02rem;color:#111827}
-    .accordion-header .arrow{font-size:1.4rem;transform:rotate(0deg);transition:transform .3s;color:var(--color-primary-dark)}
-    .accordion-item.active .accordion-header .arrow{transform:rotate(180deg)}
-    .accordion-content{padding:0 22px;max-height:0;overflow:hidden;transition:max-height .4s ease-out, padding .3s ease-out}
-    .accordion-content p{padding-bottom:18px;margin:0;padding-top:8px;font-size:.97rem}
-    .accordion-item.active .accordion-content{border-top:1px solid #E5E7EB}
 
-    /* CTA final */
-    #cta-final{
-      text-align:center;background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-primary-dark) 100%);
-      color:#fff;padding:90px 0;position:relative;overflow:hidden
-    }
-    #cta-final h2{color:#fff;max-width:780px;margin:0 auto 16px}
-    #cta-final p{color:rgba(255,255,255,.92);max-width:600px;margin:0 auto 32px}
-    #cta-final .cta-buttons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
-    #cta-final .btn-cta-primary{background:#fff;color:var(--color-primary-dark);font-weight:700}
-    #cta-final .btn-cta-primary:hover{box-shadow:0 6px 22px rgba(15,23,42,.30);transform:translateY(-2px)}
-    #cta-final .btn-cta-secondary{background:transparent;color:#fff;border:2px solid #fff}
-    #cta-final .btn-cta-secondary:hover{background:#fff;color:var(--color-primary-dark);transform:translateY(-2px)}
-
-    footer{background:#fff;color:var(--color-text-gray);padding:32px 0;text-align:center;font-size:.9rem;border-top:1px solid #E5E7EB}
-
-    /* Overlay p/ mobile */
-    .overlay{
-      position:fixed;inset:0;background:rgba(15,23,42,.35);
-      z-index:1000;opacity:0;visibility:hidden;transition:opacity .25s, visibility .25s;
-      pointer-events:none;
-    }
-    .overlay.active{
-      opacity:1;visibility:visible;pointer-events:auto;
+    .faq-accordion {
+      max-width: 840px;
+      margin: 38px auto 0;
+      text-align: left;
     }
 
-    @media (max-width:768px){
-      h1{font-size:2.2rem}
-      h2{font-size:1.7rem}
-      h3{font-size:1.1rem}
-      p{font-size:1rem}
-      p.subtitle{margin-bottom:2.4rem}
-      .btn{padding:.85rem 1.5rem;font-size:1rem;width:100%;max-width:340px}
-      #hero .hero-buttons,#cta-final .cta-buttons{flex-direction:column;gap:14px;align-items:center}
-      .cards-grid{grid-template-columns:1fr}
-      .step-item{flex-direction:column;align-items:flex-start}
-      #hero .metrics{gap:24px;margin-top:32px}
-      section{padding:64px 0}
-      #cta-final{padding:80px 0}
-      #hero{padding-top:120px}
+    .accordion-item {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--color-card-border);
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
-    @media (max-width:480px){
-      .logo-container{font-size:1.1rem}
+    .accordion-item.active {
+      box-shadow: var(--shadow-strong);
+      border-color: rgba(10, 127, 219, 0.4);
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--color-text-main);
+    }
+
+    .accordion-header .arrow {
+      font-size: 1.2rem;
+      color: var(--color-primary);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-item.active .accordion-header .arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease-out, padding 0.35s ease-out;
+    }
+
+    .accordion-content p {
+      padding: 8px 0 16px;
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--color-text-muted);
+    }
+
+    /* CTA FINAL */
+
+    #cta-final {
+      background: radial-gradient(circle at top left, rgba(10, 127, 219, 0.18), transparent),
+        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.4), transparent),
+        #0b1120;
+      color: #ffffff;
+      text-align: center;
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-final h2 {
+      color: #f9fafb;
+      max-width: 700px;
+      margin: 0 auto 14px;
+    }
+
+    #cta-final p {
+      color: rgba(226, 232, 240, 0.9);
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-cta-primary {
+      background: #ffffff;
+      color: var(--color-primary-dark);
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-cta-primary:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
+
+    .btn-cta-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.7);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.4);
+    }
+
+    .btn-cta-secondary:hover {
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    footer {
+      background: #0b1120;
+      color: #9ca3af;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 18px 0;
+    }
+
+    footer a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ================= RESPONSIVO ================= */
+
+    @media (max-width: 1024px) {
+      #hero .grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      #hero {
+        padding-top: 120px;
+      }
+
+      .hero-right-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .incluso-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 70px 0;
+      }
+
+      #hero {
+        padding-top: 112px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+      }
+
+      .steps-grid,
+      .incluso-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-container {
+        font-size: 1.05rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-container span {
+        display: none; /* se quiser mostrar só o símbolo em telas muito pequenas */
+      }
     }
   </style>
 </head>
 <body>
-
   <!-- HEADER -->
   <header id="site-header">
     <div class="container">
       <nav>
         <a href="#hero" class="logo-container">
-          <img src="https://i.imgur.com/Zn5zXEv.png" alt="Nova Company logo" loading="lazy" decoding="async"/>
+          <img src="https://i.imgur.com/Zn5zXEv.png" alt="Nova Company logo" loading="lazy" decoding="async" />
           <span>Nova Company</span>
         </a>
 
         <div class="nav-links" role="navigation" aria-label="Principal">
           <div class="close-menu" aria-label="Fechar menu">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
+
           <a href="#como-funciona">Como funciona</a>
           <a href="#incluso">O que está incluso</a>
           <a href="#resultados">Resultados</a>
           <a href="#faq">Dúvidas</a>
-          <a href="https://wa.me/5513978286116?text=Ol%C3%A1!%20Quero%20aumentar%20os%20pacientes%20da%20minha%20cl%C3%ADnica%20com%20tr%C3%A1fego%20pago%20%2B%20secret%C3%A1ria%20de%20IA."
-             target="_blank" rel="noopener" class="btn-nav">Falar com um especialista</a>
+          <a
+            href="https://wa.me/5513978286116?text=Olá!%20Quero%20uma%20estratégia%20completa%20da%20Nova%20Company."
+            target="_blank"
+            rel="noopener"
+            class="btn-nav"
+          >
+            Falar com um especialista
+          </a>
         </div>
 
         <div class="hamburger-menu" aria-label="Abrir menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         </div>
       </nav>
     </div>
   </header>
+
   <div class="overlay"></div>
 
   <!-- HERO -->
   <section id="hero">
     <div class="container">
-      <span class="badge" data-aos="fade-up" data-aos-delay="80">
-        Especialistas em clínicas médicas, odontológicas e estética
-      </span>
-      <h1 data-aos="fade-up" data-aos-delay="170">
-        Mais pacientes certos todos os meses com
-        <span class="hero-highlight">Tráfego Pago + Secretária de IA</span>
-      </h1>
-      <p data-aos="fade-up" data-aos-delay="260">
-        A Nova Company cuida das campanhas e a recepcionista de IA responde WhatsApp 24h por dia.
-        Você só foca em atender bem e aumentar o faturamento da clínica.
-      </p>
+      <div class="grid" data-aos="fade-up">
+        <div>
+          <div id="hero-badge">
+            <span>Tráfego pago + IA para saúde</span>
+            <span class="tag">Dentistas • Clínicas • Estética</span>
+          </div>
 
-      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="340">
-        <a href="https://wa.me/5513978286116?text=Ol%C3%A1!%20Quero%20uma%20estrat%C3%A9gia%20completa%20para%20minha%20cl%C3%ADnica."
-           target="_blank" class="btn btn-primary">Quero mais pacientes qualificados</a>
-        <button class="btn btn-secondary" onclick="alert('Em breve: agenda online para ver datas de diagnóstico gratuito!')">
-          Ver agenda de diagnóstico
-        </button>
-      </div>
+          <h1>Mais pacientes todos os dias com Tráfego Pago + Secretária de IA.</h1>
+          <p class="hero-subtitle">
+            A Nova Company cria campanhas que geram leads qualificados e uma secretária de IA que responde, qualifica e agenda 24h por
+            dia no WhatsApp.
+          </p>
 
-      <div class="metrics" data-aos="fade-up" data-aos-delay="420">
-        <div class="metric-item">
-          <strong>+300%</strong>
-          <span>média de aumento em contatos qualificados</span>
+          <ul class="hero-list">
+            <li>
+              <span class="icon">✓</span>
+              <span>Campanhas 100% focadas em consultas, não em curtidas.</span>
+            </li>
+            <li>
+              <span class="icon">✓</span>
+              <span>Secretária de IA que responde em segundos e preenche sua agenda.</span>
+            </li>
+            <li>
+              <span class="icon">✓</span>
+              <span>Relatórios claros para você enxergar o custo por paciente agendado.</span>
+            </li>
+          </ul>
+
+          <div class="hero-buttons">
+            <a
+              href="https://wa.me/5513978286116?text=Olá!%20Quero%20atrair%20mais%20pacientes%20com%20tráfego%20pago%20+%20IA."
+              target="_blank"
+              class="btn btn-primary"
+            >
+              Falar com um especialista
+            </a>
+            <button class="btn btn-outline" onclick="alert('Demonstração em vídeo em breve 😉')">Ver exemplo de funil</button>
+          </div>
+
+          <p class="hero-credit">• Sem contrato longo • Exclusividade por região • Indicado para clínicos, dentistas e estética.</p>
         </div>
-        <div class="metric-item">
-          <strong>–70%</strong>
-          <span>redução de ligações perdidas</span>
-        </div>
-        <div class="metric-item">
-          <strong>24/7</strong>
-          <span>atendimento automático via WhatsApp</span>
+
+        <div>
+          <!-- Card visual de resultado (SEM aquela imagem de logos) -->
+          <div class="hero-right-card" data-aos="fade-left">
+            <span class="metric-pill">
+              Clínica odontológica •
+              <strong> +78% </strong>
+              ligações convertidas em consultas
+            </span>
+
+            <h3>Agenda cheia com o mesmo time de atendimento.</h3>
+            <p>
+              A secretária de IA responde leads de campanhas em segundos, faz perguntas de triagem e envia somente contatos quentes
+              para sua equipe.
+            </p>
+
+            <div class="hero-metrics-grid">
+              <div class="metric-box">
+                <span class="label">Custo por agendamento</span>
+                <span class="value">R$ 28</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Mensagens respondidas</span>
+                <span class="value">+3.200</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Taxa de resposta</span>
+                <span class="value">92%</span>
+              </div>
+              <div class="metric-box">
+                <span class="label">Atendimento humano</span>
+                <span class="value">-60%</span>
+              </div>
+            </div>
+
+            <div class="hero-right-footer">
+              <span>“Hoje conseguimos focar só em fechamento e atendimento no consultório.”</span>
+              <span class="badge">Case real • São Paulo (SP)</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section id="como-funciona" class="text-center">
-    <div class="container" data-aos="fade-up">
+  <section id="como-funciona">
+    <div class="container text-center" data-aos="fade-up">
       <h2>Como funciona na prática</h2>
-      <p class="subtitle">
-        Unimos mídia paga, funil de agendamento e IA para transformar quem “só pediu valor”
-        em pacientes que chegam na clínica com horário marcado.
-      </p>
+      <p class="subtitle">Do anúncio até o paciente na cadeira. Você foca no atendimento, a Nova Company cuida do fluxo inteiro.</p>
 
-      <div class="steps-list">
-        <div class="step-item" data-aos="fade-right" data-aos-delay="80">
-          <div class="step-number">1</div>
-          <div>
-            <h3>Diagnóstico rápido da clínica</h3>
-            <p>Entendemos especialidades, ticket médio, região e agenda para definir o volume ideal de leads e consultas.</p>
-          </div>
+      <div class="steps-grid">
+        <div class="step-card" data-aos="fade-up" data-aos-delay="50">
+          <span class="step-number">1</span>
+          <h3>Diagnóstico rápido</h3>
+          <p>Analisamos sua especialidade, ticket médio, região e concorrência para definir a melhor estratégia de captação.</p>
         </div>
-        <div class="step-item" data-aos="fade-right" data-aos-delay="160">
-          <div class="step-number">2</div>
-          <div>
-            <h3>Tráfego pago focado em pacientes certos</h3>
-            <p>Criamos campanhas segmentadas para pessoas com alta chance de fechar tratamento, não curiosos.</p>
-          </div>
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="120">
+          <span class="step-number">2</span>
+          <h3>Campanhas de alta conversão</h3>
+          <p>Estruturamos anúncios em Meta Ads (Facebook/Instagram) focados em agendamento de consulta, não em engajamento vazio.</p>
         </div>
-        <div class="step-item" data-aos="fade-right" data-aos-delay="240">
-          <div class="step-number">3</div>
-          <div>
-            <h3>Secretária de IA atendendo 24h</h3>
-            <p>A IA responde WhatsApp, tira dúvidas frequentes e encaminha para sua agenda ou equipe humana.</p>
-          </div>
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="190">
+          <span class="step-number">3</span>
+          <h3>Secretária de IA 24/7</h3>
+          <p>A IA recebe os leads pelo WhatsApp, responde dúvidas, coleta dados e envia apenas interessados qualificados para você.</p>
         </div>
-        <div class="step-item" data-aos="fade-right" data-aos-delay="320">
-          <div class="step-number">4</div>
-          <div>
-            <h3>Relatórios e otimizações semanais</h3>
-            <p>Acompanhamos custo por lead, agendamentos e ROI, ajustando campanhas para manter o consultório cheio.</p>
-          </div>
+
+        <div class="step-card" data-aos="fade-up" data-aos-delay="260">
+          <span class="step-number">4</span>
+          <h3>Relatórios e otimização</h3>
+          <p>Acompanhe custo por lead, custo por consulta agendada e taxa de aproveitamento em painéis simples de entender.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- O QUE ESTÁ INCLUSO -->
-  <section id="incluso" class="text-center">
-    <div class="container" data-aos="fade-up">
-      <h2>O que está incluso na parceria</h2>
-      <p class="subtitle">Tudo o que você precisa para não perder nenhum paciente por falta de atendimento ou marketing.</p>
+  <section id="incluso">
+    <div class="container text-center" data-aos="fade-up">
+      <h2>O que está incluso no plano</h2>
+      <p class="subtitle">Tudo que você precisa para transformar tráfego em consultas agendadas diariamente.</p>
 
-      <div class="cards-grid">
-        <div class="card" data-aos="fade-up" data-aos-delay="80">
-          <div class="icon">🎯</div>
+      <div class="incluso-grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="60">
+          <div class="icon">📲</div>
           <h3>Gestão completa de tráfego</h3>
-          <p>Anúncios em Facebook, Instagram e Google focados em gerar leads prontos para agendar consulta.</p>
+          <p>Criamos e otimizamos campanhas em Meta Ads para gerar leads qualificados todos os dias para o seu WhatsApp.</p>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="160">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="130">
           <div class="icon">🤖</div>
-          <h3>Secretária de IA treinada para saúde</h3>
-          <p>Scripts adaptados para clínicas médicas, odontológicas e estética, com linguagem humana e acolhedora.</p>
+          <h3>Secretária de IA personalizada</h3>
+          <p>Ajustamos o tom de voz da IA para falar como sua recepcionista: humana, educada e focada em fechar consultas.</p>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="240">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
           <div class="icon">📅</div>
           <h3>Integração com agenda</h3>
-          <p>Integramos com sua agenda ou sistema para facilitar o agendamento e confirmação de consultas.</p>
+          <p>Agendamento automático ou semiautomático para encaixar pacientes nos horários certos, sem ruído com a equipe.</p>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="320">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="270">
+          <div class="icon">🎯</div>
+          <h3>Segmentação por especialidade</h3>
+          <p>Campanhas específicas para implantes, ortodontia, harmonização, emagrecimento, estética facial e corpo.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="340">
           <div class="icon">📈</div>
-          <h3>Relatórios claros todo mês</h3>
-          <p>Você acompanha em números o volume de leads, consultas agendadas e custo por paciente.</p>
+          <h3>Painel de resultados</h3>
+          <p>Acompanhe quanto investiu, quantos leads gerou, quantas consultas agendou e quanto faturou em cada campanha.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="410">
+          <div class="icon">🧑‍⚕️</div>
+          <h3>Suporte próximo</h3>
+          <p>Contato direto com o especialista da Nova Company para ajustar campanhas, ofertas e scripts da IA sempre que necessário.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESULTADOS (SEM A IMAGEM GRANDE) -->
-  <section id="resultados" class="text-center">
-    <div class="container" data-aos="fade-up">
-      <h2>Resultados que buscamos com sua clínica</h2>
-      <p class="subtitle">
-        Nosso foco é simples: mais pacientes qualificados entrando no consultório, com previsibilidade e controle de investimento.
-      </p>
+  <!-- RESULTADOS -->
+  <section id="resultados">
+    <div class="container text-center" data-aos="fade-up">
+      <h2>Resultados que buscamos para sua clínica</h2>
+      <p class="subtitle">Cada caso é único, mas existem padrões claros quando unimos mídia paga + atendimento em IA bem feito.</p>
 
-      <div class="kpis">
-        <div class="kpi" data-aos="fade-up" data-aos-delay="60">
-          <strong>+40 a +80</strong>
-          <span>novos contatos por mês</span>
-          <p>Estratégia desenhada para gerar volume saudável de pessoas realmente interessadas no seu tratamento.</p>
+      <div class="results-grid">
+        <div class="result-card" data-aos="fade-up" data-aos-delay="60">
+          <span class="tag">Clínica odontológica</span>
+          <strong class="value">+42 novas consultas/mês</strong>
+          <small>Campanhas para implantes e ortodontia em cidade de 300 mil habitantes.</small>
+          <p>
+            Pacientes chegam pelo WhatsApp, a IA faz triagem (dor, plano, cidade) e a equipe recebe apenas contatos prontos para fechar.
+          </p>
         </div>
-        <div class="kpi" data-aos="fade-up" data-aos-delay="140">
-          <strong>30%–50%</strong>
-          <span>dos leads virando consultas</span>
-          <p>Com a IA respondendo rápido e seguindo o roteiro certo, a taxa de agendamento aumenta sem precisar de mais equipe.</p>
+
+        <div class="result-card" data-aos="fade-up" data-aos-delay="130">
+          <span class="tag">Estética avançada</span>
+          <strong class="value">Custo por consulta R$ 31</strong>
+          <small>Procedimentos de harmonização, bioestimuladores e botox.</small>
+          <p>
+            A IA responde dúvidas de valores, número de sessões e indicações, mantendo o foco em marcar avaliação presencial.
+          </p>
         </div>
-        <div class="kpi" data-aos="fade-up" data-aos-delay="220">
-          <strong>ROI previsível</strong>
-          <span>planejamento financeiro</span>
-          <p>Você sabe quanto investe, quanto volta em consultas e pode decidir com segurança quando escalar.</p>
+
+        <div class="result-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="tag">Medicina & bem-estar</span>
+          <strong class="value">Agenda 100% digital</strong>
+          <small>Clínica integrativa com múltiplas especialidades.</small>
+          <p>A secretária de IA organiza fluxos por especialidade, horário e convênio, reduzindo o volume de ligações em até 60%.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="text-center">
-    <div class="container" data-aos="fade-up">
+  <section id="faq">
+    <div class="container text-center" data-aos="fade-up">
       <h2>Dúvidas frequentes</h2>
-      <p class="subtitle">As principais perguntas que recebemos de donos de clínicas e consultórios.</p>
+      <p class="subtitle">Algumas perguntas que recebemos de clínicas e consultórios antes de começarem o projeto.</p>
 
       <div class="faq-accordion">
-        <div class="accordion-item" data-aos="fade-up" data-aos-delay="80">
+        <div class="accordion-item">
           <div class="accordion-header">
-            Como funciona a cobrança: é fixa ou variável?
+            <span>A secretária de IA não vai deixar o atendimento frio?</span>
             <span class="arrow">▼</span>
           </div>
           <div class="accordion-content">
             <p>
-              Trabalhamos com um valor de gestão + verba de anúncios. Tudo é combinado antes de começar
-              e você acompanha mensalmente quanto está sendo investido e o retorno gerado.
+              Não. A IA é treinada com exemplos reais de conversa, tom de voz e objeções da sua especialidade. Ela responde com empatia e
+              sempre oferece opção de falar com um humano quando necessário.
             </p>
           </div>
         </div>
 
-        <div class="accordion-item" data-aos="fade-up" data-aos-delay="140">
+        <div class="accordion-item">
           <div class="accordion-header">
-            A secretária de IA substitui totalmente minha recepcionista?
+            <span>Quanto eu preciso investir em anúncios por mês?</span>
             <span class="arrow">▼</span>
           </div>
           <div class="accordion-content">
             <p>
-              Não necessariamente. Ela cuida do alto volume e dos horários mais cheios/fora de expediente,
-              enquanto sua equipe humana foca em atendimentos mais complexos e presenciais.
+              Depende da sua cidade e especialidade, mas normalmente recomendamos iniciar entre R$ 1.500 e R$ 3.000 em mídia, com
+              otimizações semanais. Construímos a projeção de retorno junto com você.
             </p>
           </div>
         </div>
 
-        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="accordion-item">
           <div class="accordion-header">
-            Em quanto tempo começamos a ver resultado?
+            <span>Posso usar o número atual do WhatsApp da clínica?</span>
             <span class="arrow">▼</span>
           </div>
           <div class="accordion-content">
             <p>
-              Normalmente as campanhas começam a gerar leads nos primeiros dias.
-              O processo completo (tráfego + IA ajustada + funil) costuma ficar redondo entre 30 e 60 dias.
+              Sim, na maior parte dos casos conseguimos manter o mesmo número, configurando a IA em cima de uma conta Business oficial,
+              para garantir estabilidade e segurança no atendimento.
             </p>
           </div>
         </div>
 
-        <div class="accordion-item" data-aos="fade-up" data-aos-delay="260">
+        <div class="accordion-item">
           <div class="accordion-header">
-            A Nova Company atende qualquer região do Brasil?
+            <span>Existe fidelidade ou contrato longo?</span>
             <span class="arrow">▼</span>
           </div>
           <div class="accordion-content">
             <p>
-              Sim. Atendemos clínicas em todo o Brasil, adaptando a comunicação para o perfil do público da sua cidade
-              e o posicionamento da sua marca.
+              Não trabalhamos com contratos amarrados. Nosso foco é manter você porque o resultado faz sentido, não por obrigação
+              contratual. Se não fizer mais sentido, basta avisar com antecedência mínima.
             </p>
           </div>
         </div>
@@ -503,14 +1153,21 @@
   <!-- CTA FINAL -->
   <section id="cta-final">
     <div class="container" data-aos="fade-up">
-      <h2>Quer encher a agenda da sua clínica com pacientes certos?</h2>
-      <p>Fale agora com um especialista da Nova Company e veja se faz sentido aplicar nossa estratégia no seu consultório.</p>
+      <h2>Vamos lotar a agenda da sua clínica com previsibilidade?</h2>
+      <p>
+        Envie uma mensagem agora e receba um plano rápido com investimento recomendado, projeção de consultas e como a secretária de IA
+        entra no fluxo.
+      </p>
+
       <div class="cta-buttons">
-        <a href="https://wa.me/5513978286116?text=Ol%C3%A1!%20Quero%20saber%20como%20funciona%20o%20plano%20da%20Nova%20Company%20para%20minha%20cl%C3%ADnica."
-           target="_blank" class="btn btn-cta-primary">Falar no WhatsApp</a>
-        <button class="btn btn-cta-secondary" onclick="alert('Em breve: formulário para análise gratuita do funil da sua clínica!')">
-          Quero ver um plano para minha clínica
-        </button>
+        <a
+          href="https://wa.me/5513978286116?text=Olá!%20Quero%20um%20plano%20completo%20de%20tráfego%20+%20IA%20para%20minha%20clínica."
+          target="_blank"
+          class="btn btn-cta-primary"
+        >
+          Falar com um especialista
+        </a>
+        <button class="btn btn-cta-secondary" onclick="alert('Agenda de consultoria em breve 😉')">Ver disponibilidade de agenda</button>
       </div>
     </div>
   </section>
@@ -518,7 +1175,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>Nova Company © 2025 — Tráfego Pago + Secretária de IA para Clínicas</p>
+      Nova Company © 2025 • Focado em clínicas, consultórios e estética.
     </div>
   </footer>
 
@@ -526,20 +1183,26 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // AOS
-    AOS.init({ duration:800, once:true, mirror:false, offset:60 });
+    AOS.init({
+      duration: 800,
+      once: true,
+      mirror: false,
+      offset: 60,
+    });
 
-    // Accordion FAQ
-    document.querySelectorAll('.accordion-header').forEach(header=>{
-      header.addEventListener('click',()=>{
+    // FAQ accordion
+    document.querySelectorAll('.accordion-header').forEach((header) => {
+      header.addEventListener('click', () => {
         const item = header.closest('.accordion-item');
         const content = header.nextElementSibling;
         const open = item.classList.contains('active');
+
         item.classList.toggle('active');
         content.style.maxHeight = open ? 0 : content.scrollHeight + 'px';
       });
     });
 
-    // NAVBAR (scroll shadow, active link, mobile drawer)
+    // NAVBAR + MENU MOBILE
     document.addEventListener('DOMContentLoaded', () => {
       const header = document.getElementById('site-header');
       const hamburger = document.querySelector('.hamburger-menu');
@@ -548,54 +1211,81 @@
       const overlay = document.querySelector('.overlay');
       const pageLinks = document.querySelectorAll('a[href^="#"]:not(.logo-container)');
       const menuLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
       const getHeaderH = () => header.offsetHeight;
 
       const onScroll = () => {
-        if (window.scrollY > 8) header.classList.add('is-scrolled');
-        else header.classList.remove('is-scrolled');
+        if (window.scrollY > 8) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
         highlightActive();
       };
-      window.addEventListener('scroll', onScroll); onScroll();
+
+      window.addEventListener('scroll', onScroll);
+      onScroll();
 
       const openMobile = () => {
         navLinks.classList.add('active');
         overlay.classList.add('active');
-        document.body.style.overflow='hidden';
-        hamburger.setAttribute('aria-expanded','true');
+        document.body.style.overflow = 'hidden';
+        hamburger.setAttribute('aria-expanded', 'true');
       };
+
       const closeMobile = () => {
         navLinks.classList.remove('active');
         overlay.classList.remove('active');
-        document.body.style.overflow='auto';
-        hamburger.setAttribute('aria-expanded','false');
+        document.body.style.overflow = 'auto';
+        hamburger.setAttribute('aria-expanded', 'false');
       };
-      hamburger.addEventListener('click', openMobile);
-      closeMenu.addEventListener('click', closeMobile);
-      overlay.addEventListener('click', closeMobile);
 
-      pageLinks.forEach(a=>{
-        a.addEventListener('click',e=>{
-          const id=a.getAttribute('href');
-          if(!id || id==='#') return;
-          const el=document.querySelector(id);
-          if(!el) return;
+      if (hamburger) hamburger.addEventListener('click', openMobile);
+      if (closeMenu) closeMenu.addEventListener('click', closeMobile);
+      if (overlay) overlay.addEventListener('click', closeMobile);
+
+      pageLinks.forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (!id || id === '#') return;
+
+          const el = document.querySelector(id);
+          if (!el) return;
+
           e.preventDefault();
-          const top=el.getBoundingClientRect().top+window.pageYOffset-getHeaderH()-6;
-          window.scrollTo({top,behavior:'smooth'});
-          if(navLinks.classList.contains('active')) closeMobile();
+
+          const top = el.getBoundingClientRect().top + window.pageYOffset - getHeaderH() - 6;
+          window.scrollTo({
+            top,
+            behavior: 'smooth',
+          });
+
+          if (navLinks.classList.contains('active')) {
+            closeMobile();
+          }
         });
       });
 
-      function highlightActive(){
-        const sections=[...menuLinks].map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
-        let current=null;
-        const offset=getHeaderH()+24;
-        sections.forEach(sec=>{
-          const y=sec.getBoundingClientRect().top+window.pageYOffset;
-          if(window.pageYOffset+offset>=y) current='#'+sec.id;
+      function highlightActive() {
+        const sections = [...menuLinks]
+          .map((l) => document.querySelector(l.getAttribute('href')))
+          .filter(Boolean);
+
+        let current = null;
+        const offset = getHeaderH() + 24;
+
+        sections.forEach((sec) => {
+          const y = sec.getBoundingClientRect().top + window.pageYOffset;
+          if (window.pageYOffset + offset >= y) {
+            current = '#' + sec.id;
+          }
         });
-        menuLinks.forEach(l=>l.classList.toggle('is-active', l.getAttribute('href')===current));
+
+        menuLinks.forEach((l) => {
+          l.classList.toggle('is-active', l.getAttribute('href') === current);
+        });
       }
+
       highlightActive();
     });
   </script>
